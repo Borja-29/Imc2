@@ -14,11 +14,6 @@ import javafx.util.converter.NumberStringConverter;
 
 public class App extends Application {
 
-	private Label pesoLabel;
-	private Label kgLabel;
-	private Label alturaLabel;
-	private Label cmLabel;
-	private Label imcLabel;
 	private Label valorImc;
 	private Label condicionLabel;
 
@@ -30,10 +25,7 @@ public class App extends Application {
 	private HBox imcBox;
 
 	private VBox root;
-
-	private StringProperty strPeso = new SimpleStringProperty();
-	private StringProperty strAltura = new SimpleStringProperty();
-	private StringProperty strImc = new SimpleStringProperty();
+	
 	private StringProperty strCondicion = new SimpleStringProperty();
 
 	private DoubleProperty cantPeso = new SimpleDoubleProperty(0);
@@ -79,15 +71,12 @@ public class App extends Application {
 
 		// bindings
 
-		pesoField.textProperty().bindBidirectional(strPeso);
-		alturaField.textProperty().bindBidirectional(strAltura);
-		valorImc.textProperty().bindBidirectional(strImc);
 		condicionLabel.textProperty().bindBidirectional(strCondicion);
 
-		strPeso.bindBidirectional(cantPeso, new NumberStringConverter());
-		strAltura.bindBidirectional(cantAltura, new NumberStringConverter());
-		strImc.bindBidirectional(cantImc, new NumberStringConverter());
-		cantImc.bind(cantPeso.divide(((cantAltura.divide(100)).multiply((cantAltura.divide(100))))));
+		pesoField.textProperty().bindBidirectional(cantPeso, new NumberStringConverter());
+		alturaField.textProperty().bindBidirectional(cantAltura, new NumberStringConverter());
+		valorImc.textProperty().bindBidirectional(cantImc, new NumberStringConverter());
+		cantImc.bind(cantPeso.divide((cantAltura.divide(100)).multiply((cantAltura.divide(100)))));
 		cantImc.addListener((o, ov, nv) -> {
 			double i = nv.doubleValue();
 			if (i < 18.5) {
