@@ -43,21 +43,6 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		pesoLabel = new Label();
-		pesoLabel.setText("Peso:");
-
-		alturaLabel = new Label();
-		alturaLabel.setText("Altura:");
-
-		kgLabel = new Label();
-		kgLabel.setText("kg");
-
-		cmLabel = new Label();
-		cmLabel.setText("cm");
-
-		imcLabel = new Label();
-		imcLabel.setText("IMC: ");
-
 		valorImc = new Label();
 
 		condicionLabel = new Label();
@@ -71,15 +56,15 @@ public class App extends Application {
 
 		pesoBox = new HBox(5);
 		pesoBox.setAlignment(Pos.CENTER);
-		pesoBox.getChildren().addAll(pesoLabel, pesoField, kgLabel);
+		pesoBox.getChildren().addAll(new Label("Peso:"), pesoField, new Label("kg"));
 
 		alturaBox = new HBox(5);
 		alturaBox.setAlignment(Pos.CENTER);
-		alturaBox.getChildren().addAll(alturaLabel, alturaField, cmLabel);
+		alturaBox.getChildren().addAll(new Label("Altura:"), alturaField, new Label("cm"));
 
 		imcBox = new HBox();
 		imcBox.setAlignment(Pos.CENTER);
-		imcBox.getChildren().addAll(imcLabel, valorImc);
+		imcBox.getChildren().addAll(new Label("IMC:"), valorImc);
 
 		root = new VBox();
 		root.setAlignment(Pos.CENTER);
